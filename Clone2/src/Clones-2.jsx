@@ -101,7 +101,7 @@ const Clones2 = () => {
             <img src={`${cdnBase}store2.png`} alt="Store Interior 2" className="store-image" />
             <img src={`${cdnBase}store3.png`} alt="Store Interior 3" className="store-image" />
           </div>
-          <button className="visit-btn">Visit Nearest Chaayos</button>
+          <button className="visit-btn" onClick={() => alert("Locating nearest store...")}>Visit Nearest Chaayos</button>
         </div>
       </section>
 
@@ -143,7 +143,7 @@ const Clones2 = () => {
             <div className="premium-text">
               <span className="premium-title">PREMIUM GIFTING</span>
               <span className="premium-subtitle">for your<br /><span className="loved-ones">Loved ones</span></span>
-              <button className="order-btn">Click to Order</button>
+              <button className="order-btn" onClick={() => alert("Redirecting to Order page...")}>Click to Order</button>
             </div>
           </div>
         </div>

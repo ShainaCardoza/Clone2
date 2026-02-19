@@ -23,7 +23,7 @@ const Hero = ({ cdnBase }) => {
                     <div className="contact-number">
                         <span>For queries and support 📞 1800 120 2424</span>
                     </div>
-                    <button className="download-btn">DOWNLOAD APP</button>
+                    <button className="download-btn" onClick={() => alert("Redirecting to App Store...")}>DOWNLOAD APP</button>
                 </div>
                 <div className="featured-in">
                     <span className="featured-text">FEATURED IN</span>

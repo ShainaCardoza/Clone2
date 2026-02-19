@@ -97,6 +97,42 @@ const Clones2 = () => {
       author: "Chahat",
       location: "New Delhi",
       image: "chahat.png"
+    },
+    {
+      text: "Chaayos has completely changed my tea game! The instant premix is a lifesaver during busy work days. Tastes just like homemade chai.",
+      author: "Aditya",
+      location: "Bangalore, Karnataka",
+      image: "vishesh.png"
+    },
+    {
+      text: "I love the variety of snacks available. The Bun Maska is my absolute favorite to pair with their Masala Chai. Highly recommended!",
+      author: "Sneha",
+      location: "Pune, Maharashtra",
+      image: "bruno.png"
+    },
+    {
+      text: "The delivery packaging is top-notch. The chai stays piping hot for a long time. Great service and amazing taste every single time.",
+      author: "Raj",
+      location: "Mumbai, Maharashtra",
+      image: "chahat.png"
+    },
+    {
+      text: "Best place to hang out with friends. The ambience is cozy and the staff is very friendly. And of course, the chai is delicious!",
+      author: "Priya",
+      location: "Delhi",
+      image: "vishesh.png"
+    },
+    {
+      text: "I gifted the premium tea box to my parents and they loved it. The quality of tea leaves is exceptional. Will definitely order again.",
+      author: "Vikram",
+      location: "Hyderabad, Telangana",
+      image: "bruno.png"
+    },
+    {
+      text: "Finally found a place that serves authentic Desi Chai. The customization options are great. You can make your chai exactly how you like it.",
+      author: "Anjali",
+      location: "Chennai, Tamil Nadu",
+      image: "chahat.png"
     }
   ];
 

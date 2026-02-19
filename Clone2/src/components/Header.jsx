@@ -2,6 +2,15 @@ import React from 'react';
 import '../Clones-2.css';
 
 const Header = ({ isDarkMode, toggleTheme, openModal }) => {
+
+    const scrollToSection = (e, id) => {
+        e.preventDefault();
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <header className="header">
             <div className="container">
@@ -11,9 +20,10 @@ const Header = ({ isDarkMode, toggleTheme, openModal }) => {
                     </div>
                     <nav className="main-nav">
                         <ul>
-                            <li><a href="#">Shop</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Cafe Locator</a></li>
+                            <li><a href="#shop" onClick={(e) => scrollToSection(e, 'shop')}>Shop</a></li>
+                            {/* Mapping About Us to Home for now, or could act as a 'Back to Top' */}
+                            <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>About Us</a></li>
+                            <li><a href="#stores" onClick={(e) => scrollToSection(e, 'stores')}>Cafe Locator</a></li>
                         </ul>
                     </nav>
                     <div className="header-actions">

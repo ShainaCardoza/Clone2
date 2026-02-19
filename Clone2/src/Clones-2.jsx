@@ -7,12 +7,16 @@ import TestimonialsSection from './components/TestimonialsSection';
 import Footer from './components/Footer';
 import LoginModal from './components/LoginModal';
 import DeliverySection from './components/DeliverySection';
+import InfoModal from './components/InfoModal';
 
 const Clones2 = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Requirement: Theme toggle / content change (state-driven)
+  // New State for InfoModal
+  const [infoModalOpen, setInfoModalOpen] = useState(false);
+  const [infoMessage, setInfoMessage] = useState('');
+
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
@@ -31,6 +35,17 @@ const Clones2 = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  // Helper to open info modal
+  const showInfo = (message) => {
+    setInfoMessage(message);
+    setInfoModalOpen(true);
+  };
+
+  const closeInfoModal = () => {
+    setInfoModalOpen(false);
+    setInfoMessage('');
   };
 
   const cdnBase = "https://shainacardoza.github.io/Clones/";
@@ -89,9 +104,9 @@ const Clones2 = () => {
     <div className="clone-container">
       <Header isDarkMode={isDarkMode} toggleTheme={toggleTheme} openModal={openModal} />
 
-      <Hero cdnBase={cdnBase} />
+      <Hero cdnBase={cdnBase} onShowInfo={showInfo} />
 
-      {/* Our Stores Section - Kept inline or could be another component */}
+      {/* Our Stores Section */}
       <section className="stores-section" id="stores">
         <div className="container">
           <h2 className="section-title">Our Stores</h2>
@@ -101,11 +116,11 @@ const Clones2 = () => {
             <img src={`${cdnBase}store2.png`} alt="Store Interior 2" className="store-image" />
             <img src={`${cdnBase}store3.png`} alt="Store Interior 3" className="store-image" />
           </div>
-          <button className="visit-btn" onClick={() => alert("Locating nearest store...")}>Visit Nearest Chaayos</button>
+          <button className="visit-btn" onClick={() => showInfo("Locating nearest store...")}>Visit Nearest Chaayos</button>
         </div>
       </section>
 
-      {/* Menu Section - Kept inline for simplicity, complex layout */}
+      {/* Menu Section */}
       <section className="menu-section" id="menu">
         <div className="container">
           <h2 className="section-title">Our Menu</h2>
@@ -129,9 +144,9 @@ const Clones2 = () => {
         </div>
       </section>
 
-      <DeliverySection cdnBase={cdnBase} />
+      <DeliverySection cdnBase={cdnBase} onShowInfo={showInfo} />
 
-      {/* Premium Gifting Banner - Could be a component */}
+      {/* Premium Gifting Banner */}
       <section className="premium-gifting-banner">
         <div className="container">
           <h2 className="section-title">Premium Gifting</h2>
@@ -143,19 +158,18 @@ const Clones2 = () => {
             <div className="premium-text">
               <span className="premium-title">PREMIUM GIFTING</span>
               <span className="premium-subtitle">for your<br /><span className="loved-ones">Loved ones</span></span>
-              <button className="order-btn" onClick={() => alert("Redirecting to Order page...")}>Click to Order</button>
+              <button className="order-btn" onClick={() => showInfo("Redirecting to Order page...")}>Click to Order</button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Shop Now Section - Using ProductCard props */}
+      {/* Shop Now Section */}
       <section className="shop-section" id="shop">
         <div className="container">
           <h2 className="section-title">Shop now</h2>
           <div className="product-grid">
             {shopProducts.map((product, index) => (
-              // Little hack to pass class for gradient background based on type
               <div key={index} className="product-card">
                 <img src={`${cdnBase}${product.image}`} alt={product.title} className={`product-image ${product.type}`} />
                 <div className="product-label">{product.label}</div>
@@ -166,7 +180,7 @@ const Clones2 = () => {
         </div>
       </section>
 
-      {/* Bestsellers Section - Using ProductCard props */}
+      {/* Bestsellers Section */}
       <section className="bestsellers-section">
         <div className="container">
           <div className="section-header">
@@ -187,7 +201,7 @@ const Clones2 = () => {
         </div>
       </section>
 
-      {/* New Arrivals Section - Using ProductCard props */}
+      {/* New Arrivals Section */}
       <section className="new-arrivals-section">
         <div className="container">
           <div className="section-header">
@@ -213,6 +227,13 @@ const Clones2 = () => {
       <Footer />
 
       <LoginModal isOpen={isModalOpen} onClose={closeModal} />
+
+      {/* Generic Info Modal */}
+      <InfoModal
+        isOpen={infoModalOpen}
+        onClose={closeInfoModal}
+        message={infoMessage}
+      />
     </div>
   );
 };

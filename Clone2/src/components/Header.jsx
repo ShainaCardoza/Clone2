@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Clones-2.css';
 
 const Header = ({ isDarkMode, toggleTheme, openModal }) => {
+    const [activeLink, setActiveLink] = useState('');
 
     const scrollToSection = (e, id) => {
         e.preventDefault();
+        setActiveLink(id);
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
         }
+    };
+
+    const getLinkStyle = (id) => {
+        return activeLink === id ? { color: '#ffc107', transition: 'color 0.3s' } : {};
     };
 
     return (
@@ -20,10 +26,33 @@ const Header = ({ isDarkMode, toggleTheme, openModal }) => {
                     </div>
                     <nav className="main-nav">
                         <ul>
-                            <li><a href="#shop" onClick={(e) => scrollToSection(e, 'shop')}>Shop</a></li>
-                            {/* Mapping About Us to Home for now, or could act as a 'Back to Top' */}
-                            <li><a href="#home" onClick={(e) => scrollToSection(e, 'home')}>About Us</a></li>
-                            <li><a href="#stores" onClick={(e) => scrollToSection(e, 'stores')}>Cafe Locator</a></li>
+                            <li>
+                                <a
+                                    href="#shop"
+                                    onClick={(e) => scrollToSection(e, 'shop')}
+                                    style={getLinkStyle('shop')}
+                                >
+                                    Shop
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#home"
+                                    onClick={(e) => scrollToSection(e, 'home')}
+                                    style={getLinkStyle('home')}
+                                >
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="#stores"
+                                    onClick={(e) => scrollToSection(e, 'stores')}
+                                    style={getLinkStyle('stores')}
+                                >
+                                    Cafe Locator
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div className="header-actions">
